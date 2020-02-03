@@ -4,18 +4,8 @@
   height: 100vh;
 }
 
-.container {
-  width: calc(100vw - 15%);
-  max-width: calc(100vw - 250px);
-  height: 100vh;
-}
-
-.container-title {
-  display: flex;
-  justify-content: center;
-}
-
-.container-title > div {
-  font-size: 2rem;
-  margin: 20px 0;
+.content {
+  width: calc(100% - 250px);
+  height: 100%;
+  background-color: #0074D9;
 }
