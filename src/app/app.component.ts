@@ -7,10 +7,4 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
-
-  pageKey = 'Counter';
-
-  handlePage(newPageKey) {
-    this.pageKey = newPageKey;
-  }
 }
