@@ -7,11 +7,16 @@ import {Component} from '@angular/core';
 })
 export class AsynchronousComponent {
 
-  showMessage = false;
+  message = '';
 
-  submit() {
-    this.showMessage = true;
-    setTimeout(() => (this.showMessage = false), 2000);
+  changeAsync() {
+    setTimeout(() => {
+      this.message = 'change-1';
+    }, 1000);
+
+    setTimeout(() => {
+      this.message = 'change-2';
+    }, 2000);
   }
 
 }

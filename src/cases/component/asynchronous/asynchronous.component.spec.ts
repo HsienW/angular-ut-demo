@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 
 import {AsynchronousComponent} from './asynchronous.component';
 
@@ -22,36 +22,23 @@ describe('AsynchronousComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show the message on submit and remove it after 2 seconds', fakeAsync(() => {
+  it('#changeAsync message should change to success', fakeAsync(() => {
+    component.changeAsync();
+    tick(1000);
+    expect(component.message).toBe('change-1');
+    tick(2000);
+    expect(component.message).toBe('change-2');
+  }));
 
-    const messageElement: HTMLElement = fixture.nativeElement;
-    expect(bannerElement.textContent).toContain('banner works!');
-
-    // expect(messageElement.query('p')).not.toExist();
-    // spectator.click('button');
-    // expect(spectator.query('p')).toExist();
-    //
-    // // Advance the virtual clock by 2 seconds
-    // tick(2000);
-    // spectator.detectChanges();
-    // expect(spectator.query('p')).not.toExist();
+  it('#changeAsync Unable to determine time', fakeAsync(() => {
+    spyOn(component, 'changeAsync').and.callFake(() => {
+      setTimeout(() => {
+        component.message = 'change-1';
+      });
+    });
+    component.changeAsync();
+    tick();
+    expect(component.message).toBe('change-1');
   }));
 
 });
-
-
-// let spectator: Spectator<TestComponent>;
-// const createComponent = createComponentFactory(TestComponent);
-//
-// beforeEach(() => (spectator = createComponent()));
-//
-// it('should show the message on submit and remove it after 2 seconds', fakeAsync(() => {
-//   expect(spectator.query('p')).not.toExist();
-//   spectator.click('button');
-//   expect(spectator.query('p')).toExist();
-//
-//   // Advance the virtual clock by 2 seconds
-//   tick(2000);
-//   spectator.detectChanges();
-//   expect(spectator.query('p')).not.toExist();
-// }));
