@@ -11,13 +11,11 @@ export class FormComponent {
   loginForm: FormGroup;
 
   constructor(login: FormBuilder) {
-
     this.loginForm = login.group({
       name: ['', Validators.required],
       password: ['', Validators.minLength(8)],
       email: ['', Validators.email]
     });
-
   }
 
 }
