@@ -1,12 +1,37 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import {HttpService} from './http.service';
 
 describe('HttpService', () => {
   let httpTestingController: HttpTestingController;
   let service: HttpService;
+
+  const simulationRequest = {
+    userName: 'hello-1',
+    id: '123456'
+  };
+
+  const successRespond = {
+    status: 200,
+    data: [
+      {
+        name: 'hello-1',
+        id: '123456',
+        time: '2020-01-01'
+      },
+      {
+        name: 'hello-1',
+        id: '123456',
+        time: '2020-02-02'
+      },
+    ]
+  };
+
+  const failRespond = {
+    status: 400,
+    statusText: 'Bad Request'
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -26,23 +51,30 @@ describe('HttpService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#simulationPostCall() returned Observable should match the right data', () => {
-    const requestObj = {
-      name: 'hello',
-      description: 'hello av8d'
-    };
-
-    service.simulationPostCall({
-      name: 'hello',
-      description: 'test'
-    }).subscribe(requestData => {
-      expect(requestData.name).toEqual('hello');
+  it('#simulationPostCall() returned success', () => {
+    service.simulationPostCall(simulationRequest).subscribe(respond => {
+      expect(respond.status).toBe(200);
+      expect(respond.data.length).toBe(2);
+      expect(respond.data[0].id).toBe('123456');
+      expect(respond).toEqual(successRespond);
     });
 
     const apiRequest = httpTestingController.expectOne('http://localhost:4000/posts');
-    expect(apiRequest.request.method).toEqual('POST');
-    apiRequest.flush(requestObj);
+    expect(apiRequest.request.method).toBe('POST');
+    apiRequest.flush(successRespond);
   });
 
+  it('#simulationPostCall() returned error', () => {
+    service.simulationPostCall(simulationRequest).subscribe(respond => {
+      expect(respond.status).not.toBe(200);
+      expect(respond.statusText).toBe('Bad Request');
+      expect(respond).toEqual(failRespond);
+    });
+
+    const apiRequest = httpTestingController.expectOne('http://localhost:4000/posts');
+    expect(apiRequest.request.method).toBe('POST');
+    apiRequest.flush(failRespond);
+  });
 
 });
+

@@ -11,6 +11,6 @@ export class HttpService {
   }
 
   simulationPostCall(request: object): Observable<any> {
-    return this.http.post<any>('http://localhost:4000/posts', request);
+    return this.http.post<any>(`http://localhost:4000/posts`, request);
   }
 }
