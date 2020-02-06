@@ -23,9 +23,10 @@ describe('ParameterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should return area equal or greater than 25', () => {
-    const areaResult = component.getTrapezoidArea(2, 3, 10);
-    expect(areaResult).toBeGreaterThanOrEqual(25);
+  describe(`'getTrapezoidArea' function testing`, () => {
+    it('#getTrapezoidArea should return area equal or greater than 25', () => {
+      const areaResult = component.getTrapezoidArea(2, 3, 10);
+      expect(areaResult).toBeGreaterThanOrEqual(25);
+    });
   });
-
 });

@@ -22,13 +22,14 @@ describe('EventEmitterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should raise counterChanged event when incrementCounter fired', () => {
-    let total = 0;
-    component.counterChanged.subscribe(totalCount => {
-      total = totalCount;
-      component.incrementCounter();
-      expect(total).toBe(1);
+  describe(`'incrementCounter' function testing`, () => {
+    it('#incrementCounter should raise counterChanged event when incrementCounter fired', () => {
+      let total = 0;
+      component.counterChanged.subscribe(totalCount => {
+        total = totalCount;
+        component.incrementCounter();
+        expect(total).toBe(1);
+      });
     });
   });
-
 });

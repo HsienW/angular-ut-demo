@@ -22,23 +22,24 @@ describe('AsynchronousComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#changeAsync message should change to success', fakeAsync(() => {
-    component.changeAsync();
-    tick(1000);
-    expect(component.message).toBe('change-1');
-    tick(2000);
-    expect(component.message).toBe('change-2');
-  }));
+  describe(`'changeAsync' function testing`, () => {
+    it('#changeAsync message should change to success', fakeAsync(() => {
+      component.changeAsync();
+      tick(1000);
+      expect(component.message).toBe('change-1');
+      tick(2000);
+      expect(component.message).toBe('change-2');
+    }));
 
-  it('#changeAsync Unable to determine time', fakeAsync(() => {
-    spyOn(component, 'changeAsync').and.callFake(() => {
-      setTimeout(() => {
-        component.message = 'change-1';
+    it('#changeAsync Unable to determine time', fakeAsync(() => {
+      spyOn(component, 'changeAsync').and.callFake(() => {
+        setTimeout(() => {
+          component.message = 'change-1';
+        });
       });
-    });
-    component.changeAsync();
-    tick();
-    expect(component.message).toBe('change-1');
-  }));
-
+      component.changeAsync();
+      tick();
+      expect(component.message).toBe('change-1');
+    }));
+  });
 });

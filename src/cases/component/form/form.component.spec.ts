@@ -26,28 +26,29 @@ describe('FormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create a form with 3 controls', () => {
-    expect(component.loginForm.contains('name')).toBeTruthy();
-    expect(component.loginForm.contains('password')).toBeTruthy();
-    expect(component.loginForm.contains('email')).toBeTruthy();
-  });
+  describe(`'render' testing`, () => {
+    it('should create a form with 3 controls', () => {
+      expect(component.loginForm.contains('name')).toBeTruthy();
+      expect(component.loginForm.contains('password')).toBeTruthy();
+      expect(component.loginForm.contains('email')).toBeTruthy();
+    });
 
-  it('should make the name control required', () => {
-    const nameControl = component.loginForm.get('name');
-    nameControl.setValue('');
-    expect(nameControl.valid).toBeFalsy();
-  });
+    it('should make the name control required', () => {
+      const nameControl = component.loginForm.get('name');
+      nameControl.setValue('');
+      expect(nameControl.valid).toBeFalsy();
+    });
 
-  it('should use password with minimum 8 characters', () => {
-    const passwordControl = component.loginForm.get('password');
-    passwordControl.setValue('12345678');
-    expect(passwordControl.valid).toBeTruthy();
-  });
+    it('should use password with minimum 8 characters', () => {
+      const passwordControl = component.loginForm.get('password');
+      passwordControl.setValue('12345678');
+      expect(passwordControl.valid).toBeTruthy();
+    });
 
-  it('should validate the email input type', () => {
-    const emailControl = component.loginForm.get('email');
-    emailControl.setValue('hello@gmail.com');
-    expect(emailControl.valid).toBeTruthy();
+    it('should validate the email input type', () => {
+      const emailControl = component.loginForm.get('email');
+      emailControl.setValue('hello@gmail.com');
+      expect(emailControl.valid).toBeTruthy();
+    });
   });
-
 });
