@@ -15,8 +15,8 @@
 //   fit('should return Current testing only show focused', () => {
 //     const fixture = TestBed.createComponent(FocusedIgnoredComponent);
 //     const component = fixture.debugElement.componentInstance;
-//     const valueResult = component.callFocusedFunction();
-//     expect(valueResult).toBe('Current testing only show focused');
+//     const value = component.callFocusedFunction();
+//     expect(value).toBe('Current testing only show focused');
 //   });
 //
 // });
@@ -35,8 +35,8 @@
 //   xit('should return Current testing have been Ignored', () => {
 //     const fixture = TestBed.createComponent(FocusedIgnoredComponent);
 //     const component = fixture.debugElement.componentInstance;
-//     const valueResult = component.callIgnoredFunction();
-//     expect(valueResult).toBe('Current testing have been Ignored');
+//     const value = component.callIgnoredFunction();
+//     expect(value).toBe('Current testing have been Ignored');
 //   });
 //
 // });

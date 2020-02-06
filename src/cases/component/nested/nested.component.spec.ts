@@ -38,11 +38,12 @@ describe('NestedComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should check render My name is Nested', () => {
-    const type1Value: HTMLElement = fixture.nativeElement.querySelector('p');
-    const type2Value = component.nested;
-    expect(type1Value.textContent).toContain('My name is Nested');
-    expect(type2Value).toBe('My name is Nested');
+  describe(`'render' testing`, () => {
+    it(`should make render 'My name is Nested'`, () => {
+      const type1Value: HTMLElement = fixture.nativeElement.querySelector('p');
+      const type2Value = component.nested;
+      expect(type1Value.textContent).toContain('My name is Nested');
+      expect(type2Value).toBe('My name is Nested');
+    });
   });
-
 });

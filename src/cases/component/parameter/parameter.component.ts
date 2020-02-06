@@ -13,14 +13,14 @@ export class ParameterComponent {
     return area;
   }
 
-  public getTriangleArea(bottom: number, height: number): number {
-    const area = (bottom * height) / 2;
-    return area;
-  }
-
-  public getSquareArea(side: number): number {
-    const area = side * side;
-    return area;
-  }
+  // public getTriangleArea(bottom: number, height: number): number {
+  //   const area = (bottom * height) / 2;
+  //   return area;
+  // }
+  //
+  // public getSquareArea(side: number): number {
+  //   const area = side * side;
+  //   return area;
+  // }
 
 }

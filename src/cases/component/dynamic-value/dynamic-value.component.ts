@@ -7,8 +7,8 @@ import {Component} from '@angular/core';
 })
 export class DynamicValueComponent {
 
-  public getCurrentDate(): number {
-    return Date.now();
+  public randomNumber(min, max): number {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
 }

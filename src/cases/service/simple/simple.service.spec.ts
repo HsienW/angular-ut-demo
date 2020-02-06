@@ -3,7 +3,6 @@ import {TestBed} from '@angular/core/testing';
 import {SimpleService} from './simple.service';
 
 describe('SimpleService', () => {
-
   let service: SimpleService;
 
   beforeEach(() => {
@@ -16,10 +15,10 @@ describe('SimpleService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should return Service Value', () => {
-    const valueResult = service.getServiceValue();
-    expect(valueResult).toBe('get value success');
+  describe(`'getServiceValue' function testing`, () => {
+    it(`#getServiceValue should return 'get value success'`, () => {
+      const value = service.getServiceValue();
+      expect(value).toBe('get value success');
+    });
   });
-
 });
