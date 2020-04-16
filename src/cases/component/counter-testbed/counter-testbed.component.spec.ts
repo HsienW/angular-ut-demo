@@ -1,5 +1,6 @@
 import {CounterTestbedComponent} from './counter-testbed.component';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {CounterTestbedService} from './counter-testbed.service';
 
 describe('CounterTestbedComponent', () => {
   let component: CounterTestbedComponent;
@@ -9,6 +10,9 @@ describe('CounterTestbedComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         CounterTestbedComponent
+      ],
+      providers: [
+        CounterTestbedService
       ],
     }).compileComponents();
   }));
