@@ -11,9 +11,6 @@ import {CustomElementComponent} from './custom-element.component';
 class CounterComponent {
 }
 
-@Component({selector: 'app-form', template: ''})
-class FormComponent {
-}
 
 describe('CustomElementComponent', () => {
   let component: CustomElementComponent;
