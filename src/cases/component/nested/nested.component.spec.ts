@@ -1,19 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-// first type
-import {NO_ERRORS_SCHEMA} from '@angular/core';
-// second type
-import {Component} from '@angular/core';
-
 import {NestedComponent} from './nested.component';
 
-// second type
-@Component({selector: 'app-counter', template: ''})
-class CounterComponent {
-}
-
-@Component({selector: 'app-form', template: ''})
-class FormComponent {
-}
 
 describe('NestedComponent', () => {
   let component: NestedComponent;
@@ -24,7 +11,6 @@ describe('NestedComponent', () => {
       declarations: [
         NestedComponent,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -40,10 +26,8 @@ describe('NestedComponent', () => {
 
   describe(`'render' testing`, () => {
     it(`should make render 'My name is Nested'`, () => {
-      const type1Value: HTMLElement = fixture.nativeElement.querySelector('p');
-      const type2Value = component.nested;
-      expect(type1Value.textContent).toContain('My name is Nested');
-      expect(type2Value).toBe('My name is Nested');
+      const childHtmlElement: HTMLElement = fixture.nativeElement.querySelector('p');
+      expect(childHtmlElement.textContent).toContain('My name is Nested');
     });
   });
 });
